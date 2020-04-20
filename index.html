@@ -4,79 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Rock, paper, scissors</title>
 </head>
 
 <body>
-    <script>
-        function computerPlay() {
-            let choices = ["rock", "paper", "scissors"]
-            let randomNumber = random(choices.length)
-            return choices[randomNumber]
-        }
+    <section class="game">
 
-        function random(max) {
-            return Math.floor(Math.random() * Math.floor(max))
-        }
+        <div class="score">
+            <div class="player-score">
+                <h2>Player</h2>
+                <p>0</p>
+            </div>
 
-        function playRound(playerSelection, computerSelection) {
-            let playerChoice = playerSelection.toLowerCase()
-            if (playerChoice === computerSelection) {
-                return `Play again! You chose both ${playerChoice}`
-            }
-            if (playerChoice === "rock" && computerSelection === "paper") {
-                return "You Lose! Paper beats Rock"
-            }
-            if (playerChoice === "rock" && computerSelection === "scissors") {
-                return "You Won! Rock beats Scissors"
-            }
+            <div class="computer-score">
+                <h2>Computer</h2>
+                <p>0</p>
+            </div>
+        </div>
 
-            if (playerChoice === "paper" && computerSelection === "rock") {
-                return "You Won! Paper beats Rock"
-            }
+        <div class="intro">
+            <h1>Rock Paper and Scissors</h1>
+            <button>Let's Play</button>
+        </div>
 
-            if (playerChoice === "paper" && computerSelection === "scissors") {
-                return "You Lose! Scissors beats Paper"
-            }
+        <div class="match fadeOut">
+            <h2 class="winner">Choose an option</h2>
+            <div class="hands">
+                <img class="player-hand" src="./Assets/rock.png" alt="">
+                <img class="computer-hand" src="./Assets/rock.png" alt="">
+            </div>
+            <div class="options">
+                <button class="rock">rock</button>
+                <button class="paper">paper</button>
+                <button class="scissors">scissors</button>
+            </div>
+        </div>
 
-            if (playerChoice === "scissors" && computerSelection === "rock") {
-                return "You Lose! Rock beats Scissors"
-            }
-            if (playerChoice === "scissors" && computerSelection === "paper") {
-                return "You Won! Scissors beats Paper"
-            }
-        }
 
-        function game(rounds) {
-            let computerScore = 0
-            let playerScore = 0
+    </section>
 
-            for (let i = 0; i < rounds; i++) {
-                let input = prompt(`Round ${i + 1}/${rounds} Rock, paper or scissors?`)
-                let result = playRound(input, computerPlay())
-                console.log(result)
-
-                if (result.includes("You Won!")) {
-                    playerScore++
-                } else if (result.includes("You Lose!")) {
-                    computerScore++
-                }
-
-            }
-
-            if (computerScore > playerScore) {
-                return `You Lost! ${playerScore} / ${computerScore}`
-            }
-
-            if (computerScore < playerScore) {
-                return `You Won! ${playerScore} / ${computerScore}`
-            }
-
-            return `It's a draw! ${playerScore} / ${computerScore}`
-        }
-
-        console.log(game(5))
-    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>
