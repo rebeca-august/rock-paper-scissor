@@ -19,6 +19,7 @@ const game = () => {
         const playerHand = document.querySelector(".player-hand");
         const computerHand = document.querySelector(".computer-hand");
         const hands = document.querySelectorAll(".hands img");
+        const rockImg = document.querySelector(".player-hand");
 
         hands.forEach(hand => {
             hand.addEventListener("animationend", function () {
@@ -29,8 +30,10 @@ const game = () => {
         //Computer Options
         const computerOptions = ["rock", "paper", "scissors"];
 
-        options.forEach(options => {
-            options.addEventListener("click", function () {
+        options.forEach(option => {
+            option.addEventListener("click", function () {
+                playerHand.src = "./Assets/rock.png";
+                computerHand.src = "./Assets/rock.png";
                 //Computer Choice
                 const computerNumber = Math.floor(Math.random() * 3);
                 const computerChoice = computerOptions[computerNumber];
@@ -56,25 +59,25 @@ const game = () => {
         const computerScore = document.querySelector(".computer-score p");
         playerScore.textContent = pScore;
         computerScore.textContent = cScore;
-    }
+    };
 
     const compareHands = (playerChoice, computerChoice) => {
         const winner = document.querySelector(".winner");
         //Checking for a tie
         if (playerChoice === computerChoice) {
             winner.textContent = "It is a tie";
-            return
+            return;
         }
         //Checking for rock
         if (playerChoice === "rock") {
             if (computerChoice === "scissors") {
-                winner.textContent = "Player Wins"
-                pScore++
+                winner.textContent = "Player Wins";
+                pScore++;
                 updateScore();
                 return;
             } else {
-                winner.textContent = "Computer Wins"
-                cScore++
+                winner.textContent = "Computer Wins";
+                cScore++;
                 updateScore();
                 return;
             }
@@ -82,39 +85,36 @@ const game = () => {
         //Checking for paper
         if (playerChoice === "paper") {
             if (computerChoice === "scissors") {
-                winner.textContent = "Computer Wins"
-                cScore++
+                winner.textContent = "Computer Wins";
+                cScore++;
                 updateScore();
                 return;
             } else {
-                winner.textContent = "Player Wins"
-                pScore++
+                winner.textContent = "Player Wins";
+                pScore++;
                 updateScore();
                 return;
             }
         }
-        // Checking for scissors 
+        // Checking for scissors
         if (playerChoice === "scissors") {
             if (computerChoice === "rock") {
-                winner.textContent = "Computer Wins"
-                cScore++
+                winner.textContent = "Computer Wins";
+                cScore++;
                 updateScore();
                 return;
             } else {
-                winner.textContent = "Player Wins"
-                pScore++
+                winner.textContent = "Player Wins";
+                pScore++;
                 updateScore();
                 return;
             }
         }
-    }
-
-
+    };
 
     startGame();
     playMatch();
     compareHands();
-
 };
 
 game();

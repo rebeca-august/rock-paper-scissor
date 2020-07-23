@@ -64,7 +64,7 @@ section{
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   transition: opacity 0,5s ease 0,5s; 
+   transition: opacity 0,5s ease 0,5s;
 }
 
 .winner{
@@ -151,5 +151,41 @@ div.fadeIn{
     }
     100%{
         transform: translateY(0px);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .score h2{
+        font-size: 16px;
+        padding-top: 20px;
+    }
+
+    .intro h1{
+        font-size: 20px;
+    }
+
+    .winner{
+        font-size: 20px;
+    }
+
+    .options{
+        justify-content: center;
+    }
+
+    .match button{
+        width: 28vw;
+        margin-right: 10px;
+    }
+
+    button.scissors{
+       margin-right: 0;
+    }
+
+    .hands{
+        margin: 10% auto 20%;
+    }
+
+    .computer-hand, .player-hand{
+        width: 150px;
     }
 }
